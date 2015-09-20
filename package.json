@@ -1,0 +1,19 @@
+{
+  "name": "garage-door-opener",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "elsehow",
+  "license": "MIT",
+  "dependencies": {
+    "dnode": "^1.2.1",
+    "keypress": "^0.2.1",
+    "lodash": "^3.10.1",
+    "minimist": "^1.2.0",
+    "random-js": "^1.0.5",
+    "weak": "^1.0.0"
+  }
+}
