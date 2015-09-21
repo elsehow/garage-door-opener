@@ -2,37 +2,53 @@
 
 experiments in building a [rolling code](https://en.wikipedia.org/wiki/Rolling_code) in javascript
 
-<<<<<<< HEAD
-a rolling code scheme allows a sender to authenticate herself to a receiver without coordinating on keys often. by transmitting a single, shared key one time, a sender can identify herself to a receiver a number of times (in this case, 1024 times) over a potentially public channel.
+rolling code schemes allows a sender to authenticate herself to a receiver without trading keys often. by transmitting a single, shared key one time, a sender can identify herself to a receiver a number of times (in this case, 1024 times) over a potentially public channel.
 
-rolling codes are an amazingly simply piece of cryptography. by relying on the fact that two, identical pseudorandom number generators will spit out the same numbers given the same seed, alice and bob can use a seed as their shared secret, can build a list of pseudo-random numbers that look completely random to eavesdroppers. (assuming a [cryptographically secure PRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - we use the [Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister) implemented in [random-js](https://www.npmjs.com/package/random-js)).
+rolling codes are amazingly simple. by relying on the fact that two, identical pseudorandom number generators will spit out the same numbers given the same seed, you and i can use a seed as our shared secret, then build a list of identical numbers independently. we can use these numbers to authenticate ourselves to one another. to an eavesdropper (someone who doesn't know our seed), the numbers we use will look perfectly random.*
+
+*assuming a [cryptographically secure PRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator). we use the [Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister) implemented in [random-js](https://www.npmjs.com/package/random-js).
 
 # usage
 
 use garage-door-opener to create a sender or a receiver:
 
 ```javascript
-
-garagedoor = require('garage-door-opener')
+var garagedoor = require('garage-door-opener')
+var my_seed    = 59823
 
 s = garagedoor.sender(my_seed, 43)
-s.next()
-> 5326294
-
 r = garagedoor.receiver(my_seed, 43)
+
+// sender generates the next random key
+code_to_send = s.next()
+// receiver makes sure this key looks good
+r.check(code_to_send)
+> True
+
+// works even if receiver misses a few messages from sender (up to 255)
+s.next()
+s.next()
+r.check(s.next())
+> True
+
+// good luck guessing codes if you don't know the seed!
 r.check(5326294)
 > False
 ```
 
+See examples/dnode_example.js for a more complete simulation.
+
 # API
 
-Sender:
+### sender
 
 `sender(seed, start_i)`
 
 Takes a seed (a 32-bit integer) and a code index to start at (0 by default).
 
 Returns an object with the method `next()`, which returns the next key in its buffer.
+
+### receiver
 
 `receiver(seed, start_i)`
 
@@ -46,21 +62,12 @@ with npm do:
 
 `npm install garage-door-opener`
 
-# license
-
-M
-=======
 # developing
  
 first, `npm install`
 
-you'll also need to `npm install -g coffee` (sorry)
+then, `npm test`
 
-now, `coffee receiver` in one shell, and `coffee sender` in another. press enter on the sender to try a new key.
+# license
 
-# TODO
-
-simulate receiver/sender getting out of sync
-sender/receiver patterns into a transport-agnostic module
-write tests
->>>>>>> c6399c3454c5b956f1a12a74dd7047317cd558a0
+MIT
