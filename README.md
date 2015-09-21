@@ -2,9 +2,13 @@
 
 experiments in building a [rolling code](https://en.wikipedia.org/wiki/Rolling_code) in javascript
 
-rolling code schemes allows a sender to authenticate herself to a receiver without trading keys often. by transmitting a single, shared key one time, a sender can identify herself to a receiver a number of times (in this case, 1024 times) over a potentially public channel.
+have you ever thought about how garage door openers work? or keyless entries into cars? if someone's standing by you while you unlock your lexus, couldn't an eavesdropper record the signal coming out of your key, and replay this signal later to unlock your car?
 
-rolling codes are amazingly simple. by relying on the fact that two, identical pseudorandom number generators will spit out the same numbers given the same seed, you and i can use a seed as our shared secret, then build a list of identical numbers independently. we can use these numbers to authenticate ourselves to one another. to an eavesdropper (someone who doesn't know our seed), the numbers we use will look perfectly random.*
+with the magic of rolling codes, we can send differnet messages (or messages over different frequencies) with each press of the button - and coordinate which key to send/listen for without trading keys often.
+
+by transmitting a single, shared key one time, a sender can identify herself to a receiver a number of times over a potentially public channel.
+
+rolling codes are amazingly simple. by relying on the fact that two, identical pseudorandom number generators will spit out the same numbers given the same seed, you and i can use a seed as our shared secret, then build a list of identical numbers independently. we can use these numbers to identify ourselves to one another. to an eavesdropper (someone who doesn't know our seed), the numbers we use will look perfectly random.*
 
 *assuming a [cryptographically secure PRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator). we use the [Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister) implemented in [random-js](https://www.npmjs.com/package/random-js).
 
