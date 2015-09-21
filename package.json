@@ -1,19 +1,32 @@
 {
   "name": "garage-door-opener",
   "version": "1.0.0",
-  "description": "",
+  "description": "rolling code/hopping code implementation in js",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "node test/test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/elsehow/garage-door-opener.git"
   },
   "author": "elsehow",
   "license": "MIT",
   "dependencies": {
-    "dnode": "^1.2.1",
-    "keypress": "^0.2.1",
     "lodash": "^3.10.1",
-    "minimist": "^1.2.0",
-    "random-js": "^1.0.5",
-    "weak": "^1.0.0"
-  }
+    "random-js": "^1.0.5"
+  },
+  "devDependencies": {
+    "tape": "^4.2.0"
+  },
+  "bugs": {
+    "url": "https://github.com/elsehow/garage-door-opener/issues"
+  },
+  "homepage": "https://github.com/elsehow/garage-door-opener#readme",
+  "keywords": [
+    "crypto",
+    "rolling code",
+    "hopping code",
+    "random",
+  ]
 }
