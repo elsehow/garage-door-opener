@@ -2,6 +2,7 @@
 
 experiments in building a [rolling code](https://en.wikipedia.org/wiki/Rolling_code) in javascript
 
+<<<<<<< HEAD
 a rolling code scheme allows a sender to authenticate herself to a receiver without coordinating on keys often. by transmitting a single, shared key one time, a sender can identify herself to a receiver a number of times (in this case, 1024 times) over a potentially public channel.
 
 rolling codes are an amazingly simply piece of cryptography. by relying on the fact that two, identical pseudorandom number generators will spit out the same numbers given the same seed, alice and bob can use a seed as their shared secret, can build a list of pseudo-random numbers that look completely random to eavesdroppers. (assuming a [cryptographically secure PRNG](https://en.wikipedia.org/wiki/Cryptographically_secure_pseudorandom_number_generator) - we use the [Mersenne Twister](https://en.wikipedia.org/wiki/Mersenne_Twister) implemented in [random-js](https://www.npmjs.com/package/random-js)).
@@ -48,3 +49,18 @@ with npm do:
 # license
 
 M
+=======
+# developing
+ 
+first, `npm install`
+
+you'll also need to `npm install -g coffee` (sorry)
+
+now, `coffee receiver` in one shell, and `coffee sender` in another. press enter on the sender to try a new key.
+
+# TODO
+
+simulate receiver/sender getting out of sync
+sender/receiver patterns into a transport-agnostic module
+write tests
+>>>>>>> c6399c3454c5b956f1a12a74dd7047317cd558a0
