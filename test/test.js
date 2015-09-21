@@ -11,11 +11,12 @@ var sometimes = function(fn) {
 prng = require('random-js').engines.mt19937()
 prng.autoSeed()
 seed = prng()
+var start_i = Math.floor(Math.random()*100)
 // make a sender and receiver with the same random seed and starting index
-r = garagedooropener.receiver(seed, 0)
-s = garagedooropener.sender(seed, 0)
+r = garagedooropener.receiver(seed, start_i)
+s = garagedooropener.sender(seed, start_i)
 
-trials = 5120
+trials = 5013 
 
 test(function(t) {
   t.plan(trials)
