@@ -23,17 +23,17 @@ r = garagedoor.receiver(my_seed, 43)
 code_to_send = s.next()
 // receiver makes sure this key looks good
 r.check(code_to_send)
-> True
+// > True
 
 // works even if receiver misses a few messages from sender (up to 255)
 s.next()
 s.next()
 r.check(s.next())
-> True
+// > True
 
 // good luck guessing codes if you don't know the seed!
 r.check(5326294)
-> False
+// > False
 ```
 
 See examples/dnode_example.js for a more complete simulation.
