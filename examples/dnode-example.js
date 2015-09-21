@@ -1,12 +1,12 @@
-var garagedoor = require('..')
-    , argv = require('minimist')(process.argv.slice(2))
-    , seed = 15035263
-
 // DNODE EXAMPLE
 // in one shell, run this script with flag -r to run a receiver
 // in another, run this script with -s to run a sender
 // in the sender, press enter bunches of times and see what happens!!
 // notice how the sender will sometimes fail to deliver the message to the receiver (simulated failure in this case), but the system goes on working!
+
+var garagedoor = require('..')
+    , argv = require('minimist')(process.argv.slice(2))
+    , seed = 15035263
 
 // nefarious function sometimes fails
 var sometimes = function (fn) {
